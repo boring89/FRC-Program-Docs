@@ -1,9 +1,9 @@
 FRC Program Documentation
 =========================
 
-Welcome to the official FRC 開發手冊。
+Welcome to 小菇の FRC 開發手冊。
 
-本文件集涵蓋從環境設定、硬體組態到程式設計流程的教學與參考資料，適合團隊新成員與開發者閱讀。
+本文涵蓋從環境設定、硬體組態到程式設計流程的教學與參考資料，適合團隊新成員與開發者閱讀。
 
 Getting started
 ---------------

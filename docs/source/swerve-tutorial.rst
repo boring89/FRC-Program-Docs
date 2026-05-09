@@ -6,7 +6,7 @@ Swerve 驅動程式編寫教程
 專案概覽
 --------
 
-GitHub 連結：https://github.com/boring89/2024-CloneBot
+GitHub 連結：https://github.com/FRC-Team-10114/2024-CloneBot
 
 這個專案實現了一個完整的 Swerve 驅動系統，包含：
 
