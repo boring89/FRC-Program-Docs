@@ -1,4 +1,4 @@
-FRC Program Documentation
+小菇の FRC 開發手冊
 =========================
 
 Welcome to 小菇の FRC 開發手冊。
