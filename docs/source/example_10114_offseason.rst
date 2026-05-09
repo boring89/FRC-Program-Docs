@@ -7,7 +7,6 @@
 專案概覽
 --------
 
-專案位於 `copilot_source\program\10114-OffSeason-2025`。
 GitHub 連結：https://github.com/boring89/10114-OffSeason-2025
 
 這個專案是一個完整的 FRC 機器人程式範例，專注於 2025 年 offseason 期間的開發。專案名稱為 10114-OffSeason-2025，屬於隊伍 10114 的 offseason 專案。程式使用 Java 語言，基於 WPILib 的 Command-Based 架構，整合了 Swerve 全向輪驅動系統、機械臂控制，以及視覺對齊功能。

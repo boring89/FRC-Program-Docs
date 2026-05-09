@@ -7,7 +7,6 @@
 專案概覽
 --------
 
-專案位於 `copilot_source\program\2026-Competition`。
 GitHub 連結：https://github.com/FRC-Team-10114/2026-Competition
 
 這個專案是隊伍 10114 在 2026 年 FRC 比賽季的完整機器人程式碼。專案名稱為 2026-Competition，使用 Java 語言開發，基於 WPILib 的 LoggedRobot 架構，整合了先進的記錄系統、視覺處理、自動路徑選擇，以及系統識別測試功能。

@@ -3,6 +3,8 @@
 
 本專區提供實際 FRC 機器人專案的教學與分析，幫助你理解如何將理論應用到實作中。每個範例都包含程式碼結構說明、關鍵類別解釋與學習建議。
 
+特別推薦：**Swerve 驅動程式編寫教程** - 從零開始的完整 Swerve 系統實作指南，適合初學者循序漸進學習。
+
 範例程式列表
 ------------
 
@@ -10,6 +12,14 @@
    :maxdepth: 2
    :caption: 範例程式
 
+   swerve-tutorial
+   swerve-constants
+   swerve-module
+   swerve-drivetrain
+   swerve-commands
+   swerve-integration
+   example_10114_offseason
+   example_2026_competition
    example_10114_offseason
    example_2026_competition
 
