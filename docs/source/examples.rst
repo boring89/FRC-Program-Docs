@@ -20,13 +20,11 @@
    swerve-integration
    example_10114_offseason
    example_2026_competition
-   example_10114_offseason
-   example_2026_competition
 
 如何使用這些範例
 ----------------
 
-1. **下載與開啟**：從 `copilot_source\program` 資料夾複製專案到你的工作區。
+1. **下載與開啟**：從 GitHub 複製專案到你的工作區。
 2. **閱讀教學**：先閱讀對應的 RST 文件，了解程式架構與設計理念。
 3. **修改與測試**：在 VS Code 中開啟專案，嘗試修改程式碼並在模擬器中測試。
 4. **應用到你的專案**：參考範例中的模式，設計自己的子系統與命令。

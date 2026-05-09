@@ -42,4 +42,3 @@ GitHub 連結：https://github.com/boring89/2024-CloneBot
 
 讓我們開始建立你的第一個 Swerve 驅動系統吧！
 
-下一步：:doc:`swerve-constants`

@@ -37,4 +37,5 @@ Programming
    wpilib_overview
    command_based
    vendor_libraries
+   swerve-tutorial
    examples
