@@ -1,0 +1,57 @@
+Robot.java 介紹
+===============
+
+`Robot` 類別繼承 `TimedRobot`，這是 WPILib 最常見的機器人入口。
+它負責：
+
+- 初始化 `RobotContainer`
+- 在每個週期呼叫 `CommandScheduler.getInstance().run()`
+- 處理 `autonomousInit()`、`teleopInit()`、`testInit()` 等模式切換
+
+在此範例中，`robotPeriodic()` 確保命令排程器持續執行，這是 Command-Based 專案的必要設定。
+
+主要特點
+~~~~~~~~
+
+- 程式保留了 PathPlanner 及 Choreo 相關的路徑加載。
+- `autonomousInit()` 的自動程式碼目前被註解掉，意味著本專案現階段主要著重於手動控制。
+- 使用 `DriverStation.getAlliance()` 判斷是否為紅隊，以便日後自動程式考慮場地方向。
+
+程式碼輔助
+~~~~~~~~~~
+
+以下是 Robot.java 的關鍵程式碼片段：
+
+.. code-block:: java
+
+   public class Robot extends TimedRobot {
+
+     private final Optional<Trajectory<SwerveSample>> trajectory = Choreo.loadTrajectory("New Path");
+
+     private final Timer timer = new Timer();
+
+     private Command m_autonomousCommand;
+
+     private final RobotContainer m_robotContainer;
+
+     public Robot() {
+       m_robotContainer = new RobotContainer();
+     }
+
+     @Override
+     public void robotPeriodic() {
+       CommandScheduler.getInstance().run();
+     }
+
+     @Override
+     public void autonomousInit() {
+       // 自動程式碼目前被註解
+     }
+
+     private boolean isRedAlliance() {
+       return DriverStation.getAlliance().orElse(Alliance.Blue).equals(Alliance.Red);
+     }
+
+   }
+
+這個類別展示了基本的 TimedRobot 結構，以及如何整合 Choreo 路徑規劃工具。

@@ -1,0 +1,58 @@
+ArmControl 範例
+===============
+
+`ArmControl` 將按鈕輸入轉換為一系列命令：
+
+- `ButtonA()`、`ButtonB()`、`ButtonX()`、`ButtonY()` 分別對應不同位置設定
+- `LeftTriggerPressed()` 會進行進料並監測 `hand.isCoralIn()` 狀態
+- `RightTriggerPressed()` 觸發發射控制
+- `Commands.either(...)` 可讓按鈕輸入根據模式判斷要執行哪套命令
+
+這是一個典型的 Command-Based 設計，將「何時觸發」與「要做什麼」分離，讓按鍵邏輯更容易閱讀與調整。
+
+程式碼輔助
+~~~~~~~~~~
+
+以下是 ArmControl.java 的關鍵程式碼片段：
+
+.. code-block:: java
+
+   public class ArmControl extends SubsystemBase {
+
+     private final Pivot pivot;
+     private final Elevator elevator;
+     private final Hand hand;
+     private boolean CoralMode = true;
+
+     public Command ButtonB() {
+         return Commands.either(
+                 toLevel2(),
+                 toProcessor(),
+                 () -> CoralMode);
+     }
+
+     public Command LeftTriggerPressed() {
+         return Commands.either(
+                 toGroundCoralIntake().andThen(this.Intake()),
+                 Commands.either(
+                         AlgaeIntake(),
+                         toGroundAlgaeIntake().andThen(AlgaeIntake()),
+                         () -> inReef),
+                 () -> CoralMode);
+     }
+
+     public Command toLevel2() {
+         return Commands.sequence(
+                 run(() -> ShootSpd = 0.5).withTimeout(0.000001),
+                 this.pivot.setPoint(Positions.kL2[0]).until(() -> pivot.isInSetPoint()),
+                 this.elevator.setPoint(Positions.kL2[2]).until(() -> elevator.isInSetPoint()),
+                 this.hand.setPoint(Positions.kL2[1]));
+     }
+
+     public void ChangeMode() {
+         CoralMode = !CoralMode;
+     }
+
+   }
+
+這個類別展示了如何使用 `Commands.either` 和 `Commands.sequence` 來組合複雜的機械臂動作，並根據模式切換行為。

@@ -23,7 +23,8 @@ Programming
 -----------
 
 - FRC 程式架構
-- 控制流程與命令式設計
+- WPILib Java 與 Command-Based 設計
+- 第三方函式庫與廠商依賴
 - 主要類別與範例程式碼
 
 .. toctree::
@@ -33,3 +34,7 @@ Programming
    getting_started
    robot_setup
    basic_programming
+   wpilib_overview
+   command_based
+   vendor_libraries
+   examples

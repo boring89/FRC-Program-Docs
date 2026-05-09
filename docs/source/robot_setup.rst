@@ -4,15 +4,31 @@ Robot Setup
 Hardware Overview
 -----------------
 
-FRC 機器人由許多子系統構成，從控制核心到驅動、感測與電源分配都不可忽視。常見的主要零件如下。
+FRC 機器人由機械機構與電子控制系統組成。電子控制部分決定機器人的運作能力與穩定性，常見核心零件包括：
 
-Electronic Control
+- NI roboRIO
+- 馬達與馬達控制器
+- 電力分配模組（PDP / PDP 2.0 / PDH / AMPD）
+- 電壓調節模組（VRM）
+- 主斷路器與分路斷路器
+- 感測器與視覺系統
+- 無線電與網路設備
+
+NI roboRIO
+~~~~~~~~~~
+
+NI roboRIO 是 FRC 機器人的中央控制器，負責執行團隊自行撰寫的程式，並控制所有其他硬體。它連接馬達控制器、感測器、相機和 Driver Station，並透過 WPILib API 與各種外部裝置通訊。
+
+Power Distribution
 ~~~~~~~~~~~~~~~~~~
 
-- RoboRIO: 機器人中央控制器，是整個系統的大腦。它負責執行 WPILib 程式、處理感測器資料、控制馬達與通訊。
-- Power Distribution Panel (PDP): 傳統電力分配板，用來提供 12V 電源給馬達控制器、機器人電腦和其他電子設備，並內建電流感測器。
-- Power Distribution Hub (PDH): WPILib 新一代電力分配模組，功能與 PDP 類似，但支援更簡單的數位訊號與更方便的電流監測。
-- Advanced Power Distribution (AMPD): 更高階的電力模組，整合電流監測與電源管理，適合複雜布線需求的隊伍。
+電力分配是所有 FRC 機器人的核心。最常見的幾種電力分配模組如下：
+
+- Power Distribution Panel (PDP): 傳統 12V 電力分配板，用於將電池電源分配給馬達控制器、roboRIO、VRM、PCM 等元件。
+- Power Distribution Hub (PDH): REV 的電力分配模組，內含高電流與低電流通道，並支援 CAN / USB-C 遙測。
+- Power Distribution Board (AMPD): AndyMark 的 24 埠電力分配板，支援 ATO / ATC 斷路器與簡潔布線。
+- Voltage Regulator Module (VRM): CTRE 的電壓調節模組，提供穩壓 12V 和 5V 輸出，常用於相機與客製電子電路。
+- 120A 主斷路器: 機器人電源的總開關與保護元件，連接電池與電力分配模組間的正極。
 
 Motor Controllers
 ~~~~~~~~~~~~~~~~~
@@ -65,12 +81,16 @@ Power & Pneumatics
 - Voltage Regulator Module (VRM): 為控制器與感測器提供穩定 5V 或 12V 電源。
 - Compressor / Solenoid Module: 氣動系統供氣與電磁閥控制。
 
-Detailed Power Distribution Types
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Power Distribution Details
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- PDP (Power Distribution Panel): 傳統 FRC 電力分配板，提供 12 個電路，並支援電流感測。
-- PDH (Power Distribution Hub): 新型分配模組，提供 CAN 連線與更多電流監控功能，通常與 WPILib 更加整合。
-- AMPD (Advanced Power Distribution): 更高階的電源分配與管理設備，可支援更複雜的系統需求。
+- CTRE Power Distribution Panel (PDP): 將 12VDC 電池電源分配給機器人各個元件，提供 8 組 40A 機械通道與 8 組 30A 通道，並具備 CAN 介面，可記錄電流、溫度與電池電壓。
+- CTRE Power Distribution Panel 2.0 (PDP 2.0): 提供 24 個 40A 通道並支援 ATO 斷路器，適合需要更多驅動通道的機器人。注意：PDP 2.0 本身不具有內建電流日誌顯示。
+- REV Power Distribution Hub (PDH): 提供 20 個高電流通道（40A）與 3 個低電流通道（15A），以及 1 個可切換的低電流通道。具備可拆式 WAGO 端子、LED 電壓顯示器，並可透過 CAN / USB-C 連接 REV Hardware Client 監控遙測資料。
+- AndyMark Power Distribution Board (AMPD): 提供 24 個 40A 端口，支援 ATO / ATC 斷路器，並設計成便於整理布線的直角輸出。
+- CTRE Voltage Regulator Module (VRM): 由 PDP 的專用連接器供電，提供穩壓 12V 與 5V 輸出，適合供電給相機與自訂電路。
+- 120A Main Circuit Breaker: 機器人電源系統的總開關與保護元件，保護下游布線與電控裝置。
+- Breakers: Snap Action 與 Rev ATO 斷路器常見於 PDP/PDH/PDP 2.0，用於分路保護。ATO 斷路器有 40A、30A、20A、10A 等規格。
 
 Network Configuration
 ---------------------
